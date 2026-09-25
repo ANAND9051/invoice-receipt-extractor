@@ -2,8 +2,7 @@
 google-genai>=2.25.0
 pydantic>=2.10.0
 
-# Local Offline Inference & OCR
-llama-cpp-python>=0.3.35
+# Local Offline Inference & OCR (Note: For local CPU GGUF inference, run: pip install llama-cpp-python)
 rapidocr-onnxruntime>=1.4.4
 huggingface-hub>=0.28.0
 json-repair>=0.30.0

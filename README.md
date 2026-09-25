@@ -1,5 +1,11 @@
 # 🧾 DocuExtract AI: Structured Receipt & Invoice Extractor
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://invoice-receipt-extractor.streamlit.app)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> 🌐 **Live Demo Web Application**: [https://invoice-receipt-extractor.streamlit.app](https://invoice-receipt-extractor.streamlit.app)
+
 A modern, production-grade financial document parser and structured data extraction system supporting:
 1. **☁️ Cloud Multimodal AI**: Powered by Google Gemini (`gemini-2.5-flash`, `gemini-2.0-flash`, `gemini-1.5-pro`) with automated 503 fallback.
 2. **💻 Local Offline AI**: Powered by **`llama-cpp-python`** with GBNF grammar constraints + **`RapidOCR`** + **`json-repair`** (zero cloud API calls, 100% private, runs on CPU).

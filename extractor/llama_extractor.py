@@ -9,9 +9,14 @@ import logging
 import re
 import time
 from typing import Optional, Tuple, Dict, Any, Callable
-from huggingface_hub import hf_hub_download
-import llama_cpp
-from llama_cpp import Llama
+try:
+    import llama_cpp
+    from llama_cpp import Llama
+    HAS_LLAMA_CPP = True
+except ImportError:
+    llama_cpp = None
+    Llama = Any
+    HAS_LLAMA_CPP = False
 import json_repair
 
 from extractor.schemas import ExtractedInvoiceReceipt
@@ -247,6 +252,12 @@ def _normalize_extracted_dict(parsed: Dict[str, Any]) -> Dict[str, Any]:
 
 class LlamaCppExtractor:
     def __init__(self, model_path: str, n_ctx: int = 2048, n_threads: int = 4):
+        if not HAS_LLAMA_CPP:
+            raise RuntimeError(
+                "llama-cpp-python is not installed. To run offline models locally, "
+                "install it via: pip install llama-cpp-python. "
+                "When running in Streamlit Cloud, please select 'Cloud (Google Gemini)' mode."
+            )
         global _cached_llama_model, _cached_cache_key
         self.model_path = model_path
         self.n_ctx = n_ctx
