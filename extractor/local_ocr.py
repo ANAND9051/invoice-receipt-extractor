@@ -8,34 +8,49 @@ from typing import List, Tuple, Optional
 from PIL import Image
 import pypdf
 import pypdfium2 as pdfium
-from rapidocr_onnxruntime import RapidOCR
-
-logger = logging.getLogger(__name__)
+try:
+    from rapidocr_onnxruntime import RapidOCR
+    HAS_RAPID_OCR = True
+except Exception as e:
+    RapidOCR = None
+    HAS_RAPID_OCR = False
+    logger.warning(f"RapidOCR not available: {e}")
 
 # Global singleton OCR engine to avoid reloading ONNX models on every call
-_ocr_engine: Optional[RapidOCR] = None
+_ocr_engine = None
 
 
-def get_ocr_engine() -> RapidOCR:
+def get_ocr_engine():
     global _ocr_engine
+    if not HAS_RAPID_OCR:
+        return None
     if _ocr_engine is None:
-        _ocr_engine = RapidOCR()
+        try:
+            _ocr_engine = RapidOCR()
+        except Exception as e:
+            logger.warning(f"Could not initialize RapidOCR: {e}")
+            return None
     return _ocr_engine
 
 
 def extract_text_from_image(image: Image.Image) -> str:
     """Extracts text from a PIL Image using RapidOCR."""
     engine = get_ocr_engine()
+    if engine is None:
+        return ""
     # Convert image to RGB if needed
     if image.mode != "RGB":
         image = image.convert("RGB")
     
-    result, _ = engine(image)
-    if not result:
+    try:
+        result, _ = engine(image)
+        if not result:
+            return ""
+        lines = [box[1] for box in result if box and len(box) > 1]
+        return "\n".join(lines)
+    except Exception as e:
+        logger.warning(f"OCR execution warning: {e}")
         return ""
-    
-    lines = [box[1] for box in result if box and len(box) > 1]
-    return "\n".join(lines)
 
 
 def extract_text_from_pdf_bytes(pdf_bytes: bytes) -> str:
