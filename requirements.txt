@@ -1,0 +1,20 @@
+# Core Cloud & Extraction
+google-genai>=2.25.0
+pydantic>=2.10.0
+
+# Local Offline Inference & OCR
+llama-cpp-python>=0.3.35
+rapidocr-onnxruntime>=1.4.4
+huggingface-hub>=0.28.0
+json-repair>=0.30.0
+
+# Web UI & App
+streamlit>=1.40.0
+
+# Data & Export
+pandas>=2.2.0
+openpyxl>=3.1.5
+pillow>=10.0.0
+pypdfium2>=5.13.0
+pypdf>=5.0.0
+python-dotenv>=1.0.0

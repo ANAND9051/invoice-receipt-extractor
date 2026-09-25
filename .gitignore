@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment and secrets
+.env
+.env.local
+*.env
+
+# Local Databases
+*.db
+*.sqlite3
+
+# Large Model files (GGUF weights are downloaded on demand)
+models/*.gguf
+models/.cache/
+*.gguf
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
