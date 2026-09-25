@@ -30,6 +30,57 @@ A modern, production-grade financial document parser and structured data extract
 
 ---
 
+## 🎬 Live Walkthrough & Interactive Demo
+
+<p align="center">
+  <img src="assets/demo_preview.gif" alt="DocuExtract AI Live Walkthrough" width="900">
+</p>
+
+> [!TIP]
+> 📺 **[Click here to watch or download the full HD video walkthrough](assets/demo_walkthrough.mp4)**.
+
+---
+
+## 📸 Application Screenshots
+
+### 1. ☁️ Intelligent Cloud Vision & KPI Dashboard
+Side-by-side preview with automatic key metric extraction (Vendor, Invoice Number, Total Amount, Quality Score):
+<p align="center">
+  <img src="assets/01_cloud_extraction_dashboard.png" alt="Cloud Extraction Dashboard" width="900">
+</p>
+
+### 2. 🧾 Automated Mathematical Consistency & Mart Grouping
+Dual-formula math auditor passing retail mart post-discount receipts with instant category breakdown:
+<p align="center">
+  <img src="assets/02_side_by_side_product_groups.png" alt="Side by Side Review & Audit" width="900">
+</p>
+
+### 3. 📊 Category Spending Distribution & Itemized Breakdown
+Interactive analytics chart displaying spending distribution across mart departments:
+<p align="center">
+  <img src="assets/03_category_charts_and_items.png" alt="Category Distribution & Items" width="900">
+</p>
+
+### 4. 🥬 Smart Grocery & Produce Classification
+Automated grouping of fresh produce (bhindi, capsicum, cucumber, carrot, potato) with itemized weight & prices:
+<p align="center">
+  <img src="assets/04_vegetables_breakdown.png" alt="Vegetables Breakdown" width="900">
+</p>
+
+### 5. 🥛 Dairy, Snacks & Household Essentials
+Categorized dairy products (Paneer, Curd), packaged snacks, and household essentials:
+<p align="center">
+  <img src="assets/05_dairy_snacks_groups.png" alt="Dairy, Snacks & Household" width="900">
+</p>
+
+### 6. 🍞 Bakery Department & 1-Click Multi-Format Export
+Bakery line items with one-click export to multi-sheet Excel, CSV, JSON, and SQLite History:
+<p align="center">
+  <img src="assets/06_bakery_and_exports.png" alt="Bakery & Exports" width="900">
+</p>
+
+---
+
 ## 📁 Project Structure
 
 ```text
@@ -38,6 +89,10 @@ invoice-receipt-extractor/
 ├── requirements.txt            # Python dependencies
 ├── packages.txt                # Linux container dependencies for Streamlit Cloud
 ├── .env.example                # Sample environment file for API keys
+├── assets/                     # UI screenshots and video demonstrations
+│   ├── demo_preview.gif        # Auto-looping demo preview
+│   ├── demo_walkthrough.mp4    # Full HD video walkthrough
+│   └── *.png                   # High-resolution feature screenshots
 ├── extractor/
 │   ├── __init__.py
 │   ├── schemas.py              # Pydantic data schemas with LineItem.category
